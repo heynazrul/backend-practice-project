@@ -8,6 +8,7 @@ const userSchema = new Schema<TUser>(
     id: {
       type: String,
       required: true,
+      unique: true,
     },
     password: {
       type: String,
@@ -51,7 +52,5 @@ userSchema.post('save', function (doc, next) {
   doc.password = '';
   next();
 });
-
-
 
 export const User = model<TUser>('User', userSchema);
